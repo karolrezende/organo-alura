@@ -1,0 +1,17 @@
+.textArea{
+    margin: 24px 0;
+}
+.textArea label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+input{
+    background-color: #fff;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.06);
+    border: none;
+    font-size: 16px;
+}
