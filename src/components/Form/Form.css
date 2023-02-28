@@ -8,8 +8,8 @@
     width: 800px;
     box-shadow: 7px 7px 15px 0px #00000014;
     background: #F6F6F6;
-    margin-top: 20px;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 .form input{
     width: 600px;

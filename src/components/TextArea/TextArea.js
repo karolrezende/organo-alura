@@ -6,7 +6,7 @@ const TextArea = (props) =>{
     return (
         <div className='textArea'>
             <label>{props.label}</label>
-            <input onChange={onTap} placeholder={props.placeholder}></input>
+            <input type={props.type} onChange={onTap} placeholder={props.placeholder}></input>
         </div>
     )
 }

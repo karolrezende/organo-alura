@@ -1,5 +1,6 @@
 .colaborador {
-    width: 280px;
+    width: 300px;
+    position: relative;
 }
 
 .colaborador .cabecalho {
@@ -13,7 +14,7 @@
     bottom: -50px;
 }
 
-.colaborador .rodape {
+.colaborador .rodape-colab {
     background: #FFFFFF;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
     border-radius: 0px 0px 10px 10px;
@@ -21,7 +22,7 @@
     padding-bottom: 40px;
 }
 
-.colaborador .rodape h4 {
+.colaborador .rodape-colab h4 {
     color: #6278F7;
     font-size: 18px;
     line-height: 22px;
@@ -29,9 +30,21 @@
     margin-bottom: 8px;
 }
 
-.colaborador .rodape h5 {
+.colaborador .rodape-colab h5 {
     font-size: 18px;
     line-height: 22px;
     color: #212121;
     padding: 0 16px;
+}
+.deletar{
+    position: absolute;
+    right: -10px;
+    
+    cursor: pointer;
+    
+}
+.input-color{
+    width: 20px;
+    position: absolute;
+    right: 20px;
 }

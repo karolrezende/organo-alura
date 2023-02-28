@@ -3,6 +3,8 @@ import Banner from './components/Banner/Banner';
 import Form from './components/Form/Form';
 import Rodape from './components/Rodape/Rodape';
 import Team from './components/Team/Team';
+import { v4 as uuidv4 } from 'uuid';
+
 function App() {
   const [colaboradores, setColaboradores] = useState([])
 
@@ -10,53 +12,87 @@ function App() {
     
     setColaboradores([...colaboradores, colaborador])
   }
-  const team = [
+  const [team, setTeam] = useState([
     {
+      id: uuidv4(),
       name: 'Programação',
-      firstColor: '#D9F7E9',
-      secondColor: '#57C278'
+      color: '#57C278'
     },
     {
+      id: uuidv4(),
       name: 'Front-end',
-      firstColor: '#E8F8FF',
-      secondColor: '#82CFFA'
+      color: '#82CFFA'
     },
     {
+      id: uuidv4(),
       name: 'Data Science',
-      firstColor: '#F0F8E2',
-      secondColor: '#A6D157'
+      color: '#A6D157'
     },
     {
+      id: uuidv4(),
       name:  'Devops',
-      firstColor: '#FDE7E8',
-      secondColor: '#E06B69'
+      color: '#E06B69'
     },
     {
+      id: uuidv4(),
       name: 'Ux & Design',
-      firstColor: '#FAE9F5',
-      secondColor: '#DB6EBF'
+      color: '#DB6EBF'
     },
     {
+      id: uuidv4(),
       name: 'Mobile',
-      firstColor: '#FFF5D9',
-      secondColor: '#FFBA05'
+      color: '#FFBA05'
     },
     {
+      id: uuidv4(),
       name: 'Inovação e gestão',
-      firstColor: '#FFEEDF',
-      secondColor: '#FF8A29'
+      color: '#FF8A29'
     }
-  ]
+  ])
+  const aoColorir=(color, id)=>{
+    setTeam(team.map(teamOne=>{
+      if(teamOne.id === id){
+        teamOne.color = color
+      }
+      return teamOne
+    }))
+  }
+  function aoDeletar(id){
+    console.log(id)
+    setColaboradores(colaboradores.map(colaborador=> colaborador.id !== id))
+  }
+  function createTeam(newTime){
+    setTeam([...team, {...newTime, id: uuidv4()}])
+  }
+  function aofavorito(id){
+    setColaboradores(colaboradores.map(colaborador=> {
+      if(colaborador.id === id){
+        colaborador.favorito = !colaborador.favorito
+      } 
+      return colaborador
+      })
+    )
+  }
   return (
     <div>
       <Banner/>
-      <Form time={team.map(time => time.name)} aoColaboradorCadastrado={colaborador =>aoNovoColaboradorAdicionado(colaborador)}/>
-      {team.map(time=><Team 
-      key={time.name}
-      title={time.name} 
-      firstColor={time.firstColor} 
-      secondColor={time.secondColor} 
-      colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}/>)}
+      <Form time={team.map((time) => time.name)} 
+        aoColaboradorCadastrado={colaborador =>aoNovoColaboradorAdicionado(colaborador)}
+        createTeam={createTeam}
+      />
+      {team.map((time, i)=>
+        <Team 
+          key={i}
+          aofavorito={aofavorito}
+          id ={time.id}
+          title={time.name} 
+          firstColor={time.color} 
+          color={time.color} 
+          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
+          aoDeletar={aoDeletar}
+          aoColorir={aoColorir}
+        />
+      )}
       <Rodape/>
     </div>
   );
